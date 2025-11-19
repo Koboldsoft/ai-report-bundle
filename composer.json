@@ -1,0 +1,28 @@
+{
+	"name" : "koboldsoft/ai-report-bundle",
+	"description" : "AiReport-Bundle für Contao 4.9",
+	"type" : "contao-bundle",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Koboldsoft",
+			"email" : "info@koboldsoft.com"
+		}
+	],
+	"homepage" : "https://github.com/Koboldsoft/ai-report-bundle",
+	"support" : {
+		"issues" : "https://github.com/Koboldsoft/ai-report-bundle/issues",
+		"source" : "https://github.com/Koboldsoft/ai-report-bundle"
+	},
+	"require" : {
+		"php" : "^7.2 || ^8.0",
+		"contao/core-bundle" : "^4.9"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Koboldsoft\\AiReportBundle\\" : "src/"
+		}
+	},
+	"extra" : {
+		"contao-manager-plugin" : "Koboldsoft\\AiReportBundle\\ContaoManager\\Plugin"
+	}
+}
