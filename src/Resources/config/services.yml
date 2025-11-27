@@ -5,10 +5,10 @@ services:
     public: false
 
   Koboldsoft\AiReportBundle\:
-     resource: '../../*'
-     exclude: '../../{DependencyInjection,Entity,Migrations,Tests,Resources}'
-     
+    resource: '../../*'
+    exclude: '../../{DependencyInjection,Entity,Migrations,Tests,Resources}'
+
   Koboldsoft\AiReportBundle\Service\OpenAiChatService:
-        arguments:
-            $openAiApiKey: "%env(OPENAI_API_KEY)%"
+    arguments:
+      $openAiApiKey: '%env(OPENAI_API_KEY)%'
 
