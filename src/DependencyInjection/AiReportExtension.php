@@ -2,9 +2,9 @@
 declare(strict_types = 1);
 
 /*
- * This file is part of [package name].
+ * This file is part of [ai-report-bundle].
  *
- * (c) John Doe
+ * (c) Koboldsoft
  *
  * @license LGPL-3.0-or-later
  */
@@ -39,4 +39,3 @@ class AiReportExtension extends Extension
         ]);
     }
 }
-

@@ -22,6 +22,13 @@ class MmTermine
      */
     private $id_auftrag;
 
+    
+    
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $einheiten_ist;
+    
     /**
      * @ORM\Column(type="text", nullable=true)
      */
@@ -36,10 +43,21 @@ class MmTermine
     {
         return $this->id_auftrag;
     }
-
+    
     public function setIdAuftrag(int $idAuftrag): self
     {
         $this->id_auftrag = $idAuftrag;
+        return $this;
+    }
+    
+    public function getEinheitenIst(): ?float
+    {
+        return $this->einheiten_ist;
+    }
+    
+    public function setEinheitenIst(?float $einheiten_ist): self
+    {
+        $this->einheiten_ist = $einheiten_ist;
         return $this;
     }
 
