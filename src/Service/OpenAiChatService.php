@@ -10,10 +10,18 @@ class OpenAiChatService
 
     private string $apiKey;
 
-    public function __construct(HttpClientInterface $client, string $openAiApiKey)
+    private string $promptOver25;
+
+    private string $promptUnder25;
+
+    public function __construct(HttpClientInterface $client, string $openAiApiKey, string $over25Path, string $under25Path)
     {
         $this->client = $client;
         $this->apiKey = $openAiApiKey;
+
+        // Load both prompts
+        $this->promptOver25 = file_get_contents($over25Path);
+        $this->promptUnder25 = file_get_contents($under25Path);
     }
 
     /**
@@ -68,13 +76,22 @@ class OpenAiChatService
             echo 'Error: ' . curl_error($ch);
         } else {
             $data = json_decode($response, true);
-            
+
             $text = $data['output'][0]['content'][0]['text'] ?? $data['response']['output'][0]['content'][0]['text'] ?? null;
-            
-            
+
             return $text;
         }
         curl_close($ch);
+    }
+
+    public function getOver25Prompt(): string
+    {
+        return $this->promptOver25;
+    }
+
+    public function getUnder25Prompt(): string
+    {
+        return $this->promptUnder25;
     }
 }
 

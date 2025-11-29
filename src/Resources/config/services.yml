@@ -1,3 +1,7 @@
+parameters:
+  ai_report.prompt_over25: '%kernel.project_dir%/src/Koboldsoft/AiReportBundle/Resources/prompts/over25.txt'
+  ai_report.prompt_under25: '%kernel.project_dir%/src/Koboldsoft/AiReportBundle/Resources/prompts/under25.txt'
+
 services:
   _defaults:
     autowire: true
@@ -11,4 +15,6 @@ services:
   Koboldsoft\AiReportBundle\Service\OpenAiChatService:
     arguments:
       $openAiApiKey: '%env(OPENAI_API_KEY)%'
+      $over25Path: '%ai_report.prompt_over25%'
+      $under25Path: '%ai_report.prompt_under25%'
 
