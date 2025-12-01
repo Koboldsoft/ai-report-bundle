@@ -7,15 +7,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Koboldsoft\AiReportBundle\Repository\MmTermineRepository;
+use Koboldsoft\AiReportBundle\Repository\MmAuftragRepository;
 use Koboldsoft\AiReportBundle\Service\OpenAiChatService;
 
 class ButtonController extends AbstractController
 {
     private $termineRepo;
+    private $auftragRepo;
+    private $chatOpenAiService;
     
-    public function __construct(MmTermineRepository $termineRepo, OpenAiChatService $chatOpenAiService)
+    
+    public function __construct(MmTermineRepository $termineRepo,MmAuftragRepository $auftragRepo, OpenAiChatService $chatOpenAiService)
     {
         $this->termineRepo = $termineRepo;
+        
+        $this->auftragRepo = $auftragRepo;
         
         $this->chatOpenAiService = $chatOpenAiService;
     }
@@ -30,6 +36,17 @@ class ButtonController extends AbstractController
         
         // Fetch related Termine from repository
         $termine = $this->termineRepo->findByAuftrag($auftragId);
+        
+        $auftrag = $this->auftragRepo->findAuftragById($auftragId);
+        
+        $einheiten = $auftrag->getEinheitenIst();
+        
+        // Choose prompt
+        if ($einheiten > 25) {
+            $prompt = $this->chatOpenAiService->getOver25Prompt();
+        } else {
+            $prompt = $this->chatOpenAiService->getUnder25Prompt();
+        }
         
         // Initialize output string
         $output = '';
@@ -55,11 +72,11 @@ class ButtonController extends AbstractController
         
         // Trim extra whitespace and return as plain text
         
-        //$plain = trim($plain);
+        $plain = trim($plain);
         
-        $plain = $this->chatOpenAiService->chatCurl($plain." - Fasse in einem kurzen Bericht zusammen mt ca. 200 Wörtern!");
+        $responseText = $this->chatOpenAiService->chatCurl($plain . " - " . $prompt);
         
-        return new Response($plain, 200, ['Content-Type' => 'text/plain']);
+        return new Response($einheiten." ".$responseText, 200, ['Content-Type' => 'text/plain']);
     }
     
 }
