@@ -1,5 +1,5 @@
 <?php
-
+// neu
 namespace Koboldsoft\AiReportBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
