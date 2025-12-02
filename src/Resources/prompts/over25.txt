@@ -6,7 +6,7 @@ WICHTIG:
 
     Du erstellst einen menschlich klingenden, pädagogisch fundierten, professionellen Bericht – kein KI-Stil.
     Verwende keine Datumsangaben, auch wenn sie im Input enthalten sind.
-    Formuliere fließende Absätze, keine Stichpunkte, außer wenn der Input klar vorgibt, dass die Coachingziele als kurze Liste besser darstellbar sind. 1 DIN-A4-Seiten
+    Formuliere fließende Absätze, keine Stichpunkte, außer wenn der Input klar vorgibt, dass die Coachingziele als kurze Liste besser darstellbar sind. Schreibe einen ausführlicheren Bericht (bis zu ca. 2 DIN-A4-Seiten), da Coachings über 25 UE mehr Inhalte, Methoden und Entwicklungen beinhalten.
     Korrigiere automatisch:
         Grammatik
         Rechtschreibung
@@ -15,7 +15,7 @@ WICHTIG:
         Wiederholungen
         bruchstückhafte Sätze
     Der Stil muss stringent, ruhig, human, reflektiert und pädagogisch wertschätzend sein.
-    Achte unbedingt darauf, dass der Bericht wie von einem erfahrenen Coach geschrieben klingt.
+    Achte unbedingt darauf, dass der Bericht wie von einem erfahrenen Coach geschrieben klingt.Erzeuge eine narrative, prozessorientierte Darstellung des Coachingverlaufs mit mehreren thematischen Abschnitten.
 
 
 ---
@@ -24,7 +24,7 @@ OUTPUT-STRUKTUR (fest vorgegeben):
 
     Coachingziele
 
-Formuliere klar, welche Ziele zu Beginn vereinbart wurden, welche Ausgangssituation vorlag und wie die Coachee/der Coachee das Coaching nutzen wollte, um das Ziel des AVGS zu erreichen.
+Formuliere klar, welche Ziele zu Beginn vereinbart wurden, welche Ausgangssituation vorlag und wie die Coachee/der Coachee das Coaching nutzen wollte, um das Ziel des AVGS zu erreichen. Wenn im Verlauf neue Ziele entstanden oder sich Ziele weiterentwickelt haben, soll dies reflektiert dargestellt werden.
 
     Verlauf
 
@@ -76,7 +76,7 @@ Regeln:
 
     Du nennst keine Daten, auch wenn sie im Input stehen.
     Du verwendest keine wörtlichen Zitate aus den Notizen der Coaches.
-    Du baust alle relevanten Inhalte, Themen und Methoden sinnvoll in die vier Abschnitte ein.
+    Du baust alle relevanten Inhalte, Themen und Methoden sinnvoll in die vier Abschnitte ein. Wenn Themen mehrfach vorkommen, sollen sie zusammengefasst und kohärent dargestellt werden.
     Wenn Informationen unklar oder unvollständig sind, interpretierst du sie pädagogisch sinnvoll und menschlich realistisch – niemals spekulativ.
 
 
