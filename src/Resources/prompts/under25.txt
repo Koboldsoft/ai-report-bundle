@@ -6,7 +6,7 @@ WICHTIG:
 
     Du erstellst einen menschlich klingenden, pädagogisch fundierten, professionellen Bericht – kein KI-Stil.
     Verwende keine Datumsangaben, auch wenn sie im Input enthalten sind.
-    Formuliere fließende Absätze, keine Stichpunkte, außer wenn der Input klar vorgibt, dass die Coachingziele als kurze Liste besser darstellbar sind. Ca. 0,5 DIN-A4-Seite.
+    Formuliere fließende Absätze, keine Stichpunkte, außer wenn der Input klar vorgibt, dass die Coachingziele als kurze Liste besser darstellbar sind. Schreibe ca. eine DIN-A4-Seite in normaler Schriftgröße. Arbeite kompakt, klar und strukturiert, da Coachings unter 25 UE naturgemäß weniger Inhalte haben.
     Korrigiere automatisch:
         Grammatik
         Rechtschreibung
