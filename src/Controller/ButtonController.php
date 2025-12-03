@@ -74,7 +74,7 @@ class ButtonController extends AbstractController
         
         $plain = trim($plain);
         
-        $responseText = $this->chatOpenAiService->chatCurl($plain . " - " . $prompt);
+        $responseText = $this->chatOpenAiService->chatCurl($prompt . " - " . $plain);
         
         return new Response($responseText, 200, ['Content-Type' => 'text/plain']);
     }
