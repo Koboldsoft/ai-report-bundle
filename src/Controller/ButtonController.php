@@ -31,52 +31,59 @@ class ButtonController extends AbstractController
      */
     public function press(Request $request): Response
     {
-        // Get Auftrag ID from query (?auftrag=1)
+        // Auftrag-ID aus Query (?auftrag=1), Default 1
         $auftragId = $request->query->getInt('auftrag', 1);
         
-        // Fetch related Termine from repository
+        // Termine zu diesem Auftrag holen
         $termine = $this->termineRepo->findByAuftrag($auftragId);
         
+        // Auftrag selbst holen (für Einheiten)
         $auftrag = $this->auftragRepo->findAuftragById($auftragId);
+        $einheiten = $auftrag ? $auftrag->getEinheitenIst() : 0;
         
-        $einheiten = $auftrag->getEinheitenIst();
-        
-        // Choose prompt
+        // Prompt wählen (Over/Under 25)
         if ($einheiten > 25) {
-            $prompt = $this->chatOpenAiService->getOver25Prompt();
+            $prompt = $this->chatOpenAiService->getPromptOver25();
         } else {
-            $prompt = $this->chatOpenAiService->getUnder25Prompt();
+            $prompt = $this->chatOpenAiService->getPromptUnder25();
         }
         
-        // Initialize output string
+        // Notizen der Termine zusammenbauen
         $output = '';
         
         if (empty($termine)) {
-            $output = 'No Termine found.';
+            $output = 'Keine Termindokumentationen gefunden.';
         } else {
             foreach ($termine as $t) {
-                // Append each note with a line break
                 $note = $t->getNotizen() ?? '';
                 $output .= $note . "\n";
             }
         }
         
-        // Decode HTML entities (e.g., &lt; → <)
+        // HTML-Entities dekodieren
         $decoded = html_entity_decode($output, ENT_QUOTES, 'UTF-8');
         
-        // Remove HTML tags completely
+        // HTML-Tags entfernen
         $plain = strip_tags($decoded);
         
-        // Clean up spacing and non-breaking spaces
-        $plain = str_replace(['&nbsp;', '[nbsp]', '&amp;', '[&]'], [' ', ' ', '&', 'und'], $plain);
-        
-        // Trim extra whitespace and return as plain text
+        // Sonderfälle und Spacing bereinigen
+        $plain = str_replace(
+            ['&nbsp;', '[nbsp]', '&amp;', '[&]'],
+            [' ',      ' ',      '&',     'und'],
+            $plain
+            );
         
         $plain = trim($plain);
         
-        $responseText = $this->chatOpenAiService->chatCurl($prompt . " - " . $plain);
+        // Prompt + Input zusammenbauen: erst Prompt, dann Input
+        $finalInput = $prompt . "\n\nINPUT START\n" . $plain;
         
-        return new Response($responseText, 200, ['Content-Type' => 'text/plain']);
+        // Anfrage an OpenAI
+        $responseText = $this->chatOpenAiService->chatCurl($finalInput);
+        
+        return new Response($responseText ?? 'Fehler bei der AI-Auswertung.', 200, [
+            'Content-Type' => 'text/plain',
+        ]);
     }
     
 }
