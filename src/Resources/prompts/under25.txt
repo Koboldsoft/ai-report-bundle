@@ -47,7 +47,7 @@ Beschreibe kurz:
 - Hinweise auf mögliche sinnvolle Anschlussunterstützung
 
 VERARBEITUNG DES INPUTS:
-Der Input erscheint unter der Überschrift "INPUT START".
+Der Input wird unter der Überschrift "INPUT START" übergeben.
 Er kann in Form eines Textblocks, von Stichpunkten oder gemischten Notizen vorliegen.
 
 Regeln:
@@ -58,5 +58,5 @@ Regeln:
 - Du deutest unklare Notizen pädagogisch sinnvoll und realistisch, aber ohne zu spekulieren.
 Ziel: ein fachlich hochwertiger, klar strukturierter, AZAV-konformer Kurzbericht.
 
-FINALER AUFTRAG (SHORT REPORT)
+FINALER AUFTRAG
 Erstelle aus dem folgenden Input einen ca. einseitigen, vollständig narrativen und AZAV-konformen Abschlussbericht in der vorgegebenen Struktur und in hochwertigem, professionellem Deutsch – ohne Listen, ohne Sternchen, ohne Meta-Kommentare.
