@@ -31,6 +31,38 @@ class ButtonController extends AbstractController
      */
     public function press(Request $request): Response
     {
+        // Counter-Datei
+        $counterFile = __DIR__ . '/../Resources/count/count.txt';
+        
+        // Ordner anlegen, falls nicht vorhanden
+        $dir = dirname($counterFile);
+        if (!is_dir($dir)) {
+            mkdir($dir, 0775, true);
+        }
+        
+        // Datei öffnen oder erstellen
+        $fp = fopen($counterFile, 'c+');
+        
+        if ($fp) {
+            // Exklusives Lock setzen
+            flock($fp, LOCK_EX);
+            
+            // Aktuellen Wert lesen
+            $count = intval(trim(stream_get_contents($fp)));
+            
+            // Zähler erhöhen
+            $count++;
+            
+            // Datei leeren und neuen Wert schreiben
+            ftruncate($fp, 0);
+            rewind($fp);
+            fwrite($fp, (string)$count);
+            
+            // Lock freigeben & schließen
+            flock($fp, LOCK_UN);
+            fclose($fp);
+        }
+        
         // Auftrag-ID aus Query (?auftrag=1), Default 1
         $auftragId = $request->query->getInt('auftrag', 1);
         
