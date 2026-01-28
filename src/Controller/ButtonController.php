@@ -31,7 +31,7 @@ class ButtonController extends AbstractController
      */
     public function press(Request $request): Response
     {
-        // Counter-Datei
+        // Counter-Datei "count.txt
         $counterFile = __DIR__ . '/../Resources/count/count.txt';
         
         // Ordner anlegen, falls nicht vorhanden
