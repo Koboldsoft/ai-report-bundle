@@ -16,6 +16,9 @@ WICHTIG:
 
 OUTPUT-STRUKTUR (fest vorgegeben):
 
+Nach jedem der vier Abschnitte (nach "Coachingziele", "Verlauf", "Ergebnis", "Nächste Schritte") MUSST du zwei Zeilenumbrüche einfügen, bevor der nächste Abschnitt beginnt.
+Format: [Abschnittstitel]\n\n[Inhalt]\n\n[Nächster Abschnittstitel]
+
 1. Coachingziele
 Beschreibe kurz und klar:
 - Die Ausgangssituation
@@ -59,4 +62,4 @@ Regeln:
 Ziel: ein fachlich hochwertiger, klar strukturierter, AZAV-konformer Kurzbericht.
 
 FINALER AUFTRAG
-Erstelle aus dem folgenden Input einen ca. einseitigen, vollständig narrativen und AZAV-konformen Abschlussbericht in der vorgegebenen Struktur und in hochwertigem, professionellem Deutsch – ohne Listen, ohne Sternchen, ohne Meta-Kommentare.
+Erstelle aus dem folgenden Input einen höchstens einseitigen, vollständig narrativen und AZAV-konformen Abschlussbericht in der vorgegebenen Struktur und in hochwertigem, professionellem Deutsch – ohne Listen, ohne Sternchen, ohne Meta-Kommentare.

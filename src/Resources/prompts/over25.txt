@@ -15,7 +15,10 @@ WICHTIG:
 
 OUTPUT-STRUKTUR (fest vorgegeben):
 
-1. Coachingziele  
+Nach jedem der vier Abschnitte (nach "Coachingziele", "Verlauf", "Ergebnis", "Nächste Schritte") MUSST du zwei Zeilenumbrüche einfügen, bevor der nächste Abschnitt beginnt.
+Format: [Abschnittstitel]\n\n[Inhalt]\n\n[Nächster Abschnittstitel]
+
+1. Coachingziele   
 Formuliere ausführlicher:
 - Ausgangssituation und Vorgeschichte
 - gemeinsam definierte Ziele
@@ -33,7 +36,7 @@ Dies ist der umfangreichste Abschnitt.Fasse alle Termine zu einer kohärenten, n
 - Erkenntnisse, Veränderungen und Fortschritte detailliert darstellen.
 Formuliere mehrere zusammenhängende Absätze, nicht als Liste.
 
-3. Ergebnis  
+3. Ergebnis   
 Beschreibe ausführlich:
 - berufliche Orientierung & innere Klarheit
 - gestärkte Kompetenzen
@@ -41,7 +44,7 @@ Beschreibe ausführlich:
 - wichtige Fortschritte
 - Differenzierte Darstellung größerer Entwicklungsschritte, die sich über mehrere Wochen ziehen.
 
-4. Nächste Schritte  
+4. Nächste Schritte   
 Beschreibe:
 - geplante nächste Schritte der Coachee/des Coachees
 - Empfehlungen für weitere Maßnahmen
@@ -62,5 +65,4 @@ Ziel: ein fachlich hochwertiger, klar strukturierter, AZAV-konformer Abschlussbe
 
 
 FINALER AUFTRAG
-Erstelle aus dem folgenden Input einen ausführlichen, ca. 1,5–2 DIN-A4-Seiten vollständig narrativen und AZAV-konformen Abschlussbericht in der vorgegebenen Struktur und in hochwertigem, professionellem Deutsch – ohne Listen, ohne Sternchen, ohne Meta-Kommentare.
-
+Erstelle aus dem folgenden Input einen ausführlichen, ca. 1,5 DIN-A4-Seiten vollständig narrativen und AZAV-konformen Abschlussbericht in der vorgegebenen Struktur und in hochwertigem, professionellem Deutsch – ohne Listen, ohne Sternchen, ohne Meta-Kommentare.
