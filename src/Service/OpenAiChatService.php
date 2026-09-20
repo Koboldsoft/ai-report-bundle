@@ -54,7 +54,7 @@ class OpenAiChatService
      * Beispiel:
      *   $service->chat([$service->getPromptOver25(), $userText]);
      */
-    public function chat(array $messages, string $model = 'gpt-4.1'): ?string
+    public function chat(array $messages, string $model = 'gpt-5.6-luna'): ?string
     {
         $response = $this->client->request('POST', 'https://api.openai.com/v1/responses', [
             'headers' => [
@@ -85,7 +85,7 @@ class OpenAiChatService
         $url = "https://api.openai.com/v1/responses";
 
         $data = [
-            "model" => "gpt-4.1",
+            "model" => "gpt-5.6-luna",
             "input" => $message,
         ];
 
