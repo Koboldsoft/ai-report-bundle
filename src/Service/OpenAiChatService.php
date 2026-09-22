@@ -54,7 +54,7 @@ class OpenAiChatService
      * Beispiel:
      *   $service->chat([$service->getPromptOver25(), $userText]);
      */
-    public function chat(array $messages, string $model = 'gpt-5.6-luna'): ?string
+    public function chat(array $messages, string $model = 'gpt-4.1'): ?string
     {
         $response = $this->client->request('POST', 'https://api.openai.com/v1/responses', [
             'headers' => [
@@ -82,37 +82,82 @@ class OpenAiChatService
      */
     public function chatCurl(string $message): ?string
     {
-        $url = "https://api.openai.com/v1/responses";
+        $url = 'https://api.openai.com/v1/responses';
 
-        $data = [
-            "model" => "gpt-5.6-luna",
-            "input" => $message,
+        $payload = [
+            'model' => 'gpt-5.6-luna',
+            'input' => $message,
         ];
 
         $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            "Content-Type: application/json",
-            "Authorization: Bearer {$this->apiKey}",
+
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST           => true,
+            CURLOPT_CONNECTTIMEOUT => 10,
+            CURLOPT_TIMEOUT        => 120,
+            CURLOPT_HTTPHEADER     => [
+                'Content-Type: application/json',
+                "Authorization: Bearer {$this->apiKey}",
+            ],
+            CURLOPT_POSTFIELDS => json_encode(
+                $payload,
+                JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE
+            ),
         ]);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
         $response = curl_exec($ch);
 
-        if (curl_errno($ch)) {
-            // Im Produktivbetrieb besser ins Log schreiben statt echo
-            // echo 'Error: ' . curl_error($ch);
+        if ($response === false) {
+            $error = curl_error($ch);
             curl_close($ch);
-            return null;
+
+            throw new \RuntimeException(
+                'OpenAI-cURL-Fehler: ' . $error
+            );
         }
 
+        $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
         $data = json_decode($response, true);
 
-        return $data['output'][0]['content'][0]['text']
-            ?? $data['response']['output'][0]['content'][0]['text']
-            ?? null;
+        if (!is_array($data)) {
+            throw new \RuntimeException(
+                'Ungültige OpenAI-Antwort: ' . $response
+            );
+        }
+
+        if ($httpStatus < 200 || $httpStatus >= 300) {
+            $errorMessage = $data['error']['message']
+                ?? 'Unbekannter API-Fehler';
+
+            $errorCode = $data['error']['code']
+                ?? $data['error']['type']
+                ?? 'unknown';
+
+            throw new \RuntimeException(sprintf(
+                'OpenAI API HTTP %d [%s]: %s',
+                $httpStatus,
+                $errorCode,
+                $errorMessage
+            ));
+        }
+
+        foreach ($data['output'] ?? [] as $output) {
+            foreach ($output['content'] ?? [] as $content) {
+                if (
+                    ($content['type'] ?? null) === 'output_text'
+                    && isset($content['text'])
+                ) {
+                    return $content['text'];
+                }
+            }
+        }
+
+        throw new \RuntimeException(
+            'Die OpenAI-Antwort enthält keinen Ausgabetext: '
+            . json_encode($data, JSON_UNESCAPED_UNICODE)
+        );
     }
 }
